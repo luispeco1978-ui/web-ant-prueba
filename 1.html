@@ -1,243 +1,341 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ANT Seguridad</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | ANT Seguridad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0b1a2b;
+            --bg-secondary: #08121f;
+            --accent: #ff2d2d;
+            --accent-hover: #e62626;
+            --text-main: #ffffff;
+            --text-muted: #b0bec5;
+            --card-bg: rgba(19, 43, 69, 0.5);
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
 
-<style>
-body {
-    margin:0;
-    font-family:'Poppins',sans-serif;
-    background:#0b1a2b;
-    color:white;
-}
+        /* Navegación */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            background: var(--bg-secondary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
 
-header {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 30px;
-    background:#08121f;
-}
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: white;
+        }
 
-.logo-container {
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
+        .logo-img {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+        }
 
-.logo-container img {
-    height:50;
-    width:auto;
-    object-fit:contain;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
-}
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
 
-.logo-text {
-    font-size:18px;
-    font-weight:600;
-}
+        .logo-text span {
+            color: var(--accent);
+        }
 
-nav a {
-    margin:0 10px;
-    color:white;
-    text-decoration:none;
-    font-size:14px;
-}
+        nav a {
+            margin-left: 20px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
 
-.hero {
-    height:90vh;
-    background: linear-gradient(rgba(11,26,43,0.8), rgba(11,26,43,0.9)),
-    url('https://images.unsplash.com/photo-1581090700227-1e8e9d3b3b6c');
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:20px;
-}
+        nav a:hover {
+            color: var(--accent);
+        }
 
-.hero h2 {
-    font-size:42px;
-    margin-bottom:10px;
-}
+        /* Sección Hero */
+        .contact-hero {
+            text-align: center;
+            padding: 60px 5% 40px;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        }
 
-.hero p {
-    max-width:500px;
-    opacity:0.9;
-}
+        .hero-main-logo {
+            width: 140px;
+            height: auto;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 15px rgba(255, 45, 45, 0.3));
+        }
 
-.btn {
-    background:#ff2d2d;
-    padding:14px 28px;
-    border-radius:5px;
-    color:white;
-    text-decoration:none;
-    margin-top:20px;
-    display:inline-block;
-}
+        .contact-hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
 
-.section {
-    padding:60px 20px;
-    text-align:center;
-}
+        .contact-hero h1 span {
+            color: var(--accent);
+        }
 
-.services {
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-}
+        .contact-hero p {
+            color: var(--text-muted);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-.card {
-    background:#132b45;
-    padding:20px;
-    margin:15px;
-    border-radius:10px;
-    width:260px;
-    transition:0.3s;
-}
+        /* Grid Principal */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+        }
 
-.card:hover {
-    transform:translateY(-5px);
-}
+        /* Info Panel */
+        .info-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-footer {
-    background:#08121f;
-    text-align:center;
-    padding:20px;
-    font-size:14px;
-    opacity:0.8;
-}
+        .info-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
 
-input, textarea {
-    width:100%;
-    padding:10px;
-    margin:10px 0;
-    border:none;
-    border-radius:5px;
-}
+        .info-card:hover {
+            border-color: var(--accent);
+            background: rgba(19, 43, 69, 0.8);
+        }
 
-.whatsapp-float {
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#25d366;
-    color:white;
-    padding:14px 18px;
-    border-radius:50px;
-    text-decoration:none;
-    font-weight:bold;
-    z-index:999;
-    box-shadow:0 4px 10px rgba(0,0,0,0.3);
-}
+        .info-card i {
+            font-size: 28px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
 
-@media (max-width:768px){
-    header {flex-direction:column;gap:10px;}
-    .hero h2 {font-size:28px;}
-}
-</style>
+        .info-card h3 {
+            margin: 5px 0;
+            font-size: 18px;
+        }
+
+        .info-card p {
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* Form Panel */
+        .form-panel {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: #0d2136;
+            border: 1px solid #1a3652;
+            border-radius: 8px;
+            color: white;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .btn-submit {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--accent-hover);
+        }
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: var(--bg-secondary);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        @media (max-width: 968px) {
+            .main-container { grid-template-columns: 1fr; }
+            header { flex-direction: column; gap: 15px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-    <div class="logo-container">
-        <!-- IMPORTANTE: guarda tu logo como logo.png -->
-        <img src="logo.png" alt="ANT Seguridad logo">
-        <div class="logo-text">ANT Seguridad</div>
+    <header>
+        <a href="#" class="logo-container">
+            <img src="logo_rounded.jpg" alt="ANT Seguridad Logo" class="logo-img">
+            <div class="logo-text">ANT <span>SEGURIDAD</span></div>
+        </a>
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Servicios</a>
+            <a href="#">Contacto</a>
+        </nav>
+    </header>
+
+    <section class="contact-hero">
+        <img src="logo_rounded.jpg" alt="ANT Logo central" class="hero-main-logo">
+        <h1>Contacta con <span>Nosotros</span></h1>
+        <p>Expertos en seguridad inteligente. Recibe tu presupuesto personalizado en menos de 24h.</p>
+    </section>
+
+    <div class="main-container">
+        <div class="info-panel">
+            <div class="info-card">
+                <i class="fa-solid fa-phone-volume"></i>
+                <h3>Atención Directa</h3>
+                <p>+34 644 807 642</p>
+            </div>
+            <div class="info-card">
+                <i class="fa-solid fa-envelope-open-text"></i>
+                <h3>Email Oficial</h3>
+                <p>antcomercialvst@gmail.com</p>
+            </div>
+            <div class="info-card">
+                <i class="fa-solid fa-clock"></i>
+                <h3>Horarios</h3>
+                <p>L-V: 09:00 - 20:00</p>
+            </div>
+        </div>
+
+        <div class="form-panel">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" id="nombre" placeholder="Tu nombre..." required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="correo@ejemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    <input type="tel" id="telefono" placeholder="600 000 000" required>
+                </div>
+                <div class="form-group">
+                    <label>Mensaje</label>
+                    <textarea id="mensaje" rows="4" placeholder="¿Qué necesitas proteger?" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">
+                    SOLICITAR PRESUPUESTO <i class="fa-solid fa-paper-plane" style="margin-left: 10px;"></i>
+                </button>
+            </form>
+            <div id="successMessage" style="display:none; margin-top: 20px; color: #4cff88; text-align: center;">
+                Procesando solicitud...
+            </div>
+        </div>
     </div>
 
-    <nav>
-        <a href="#">Inicio</a>
-        <a href="#">Servicios</a>
-        <a href="#">Contacto</a>
-    </nav>
-</header>
+    <footer>
+        <p>&copy; 2026 ANT Seguridad - Protección Profesional sin Cuotas.</p>
+    </footer>
 
-<section class="hero">
-    <h2>Protegemos lo que más importa</h2>
-    <p>Alarmas, CCTV y seguridad profesional 24/7</p>
-    <a href="1.html" class="btn">Solicitar presupuesto</a>
-</section>
+    <a href="https://wa.me/34644807642" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
-<section class="section">
-    <h2>Servicios</h2>
-    <div class="services">
-        <div class="card">
-            <h3>Alarmas</h3>
-            <p>Instalación de sistemas de alarma si cables.</p>
-        </div>
-        <div class="card">
-            <h3>Cámaras</h3>
-            <p>Videovigilancia con acceso remoto desde tu móvil.</p>
-        </div>
-        <div class="card">
-            <h3>Sin coutas</h3>
-            <p>Controlas todo desde tu móvil, Sin cuotas mensuales, .</p>
-        </div>
-    </div>
-</section>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const telefono = document.getElementById('telefono').value;
+            const mensaje = document.getElementById('mensaje').value;
+            
+            document.getElementById('successMessage').style.display = 'block';
 
-<section class="section">
-    <h2>Contacto</h2>
+            const subject = encodeURIComponent('Presupuesto Web - ' + nombre);
+            const body = encodeURIComponent(`Nombre: ${nombre}\nEmail: ${email}\nTel: ${telefono}\nMensaje: ${mensaje}`);
+            
+            setTimeout(() => {
+                window.location.href = `mailto:antcomercialvst@gmail.com?subject=${subject}&body=${body}`;
+            }, 500);
 
-    <form onsubmit="enviarFormulario(event)" style="max-width:500px;margin:auto;text-align:left;">
-        <input id="nombre" type="text" placeholder="Nombre" required>
-        <input id="email" type="email" placeholder="Email" required>
-        <input id="telefono" type="tel" placeholder="Teléfono">
-        <textarea id="mensaje" placeholder="Mensaje" required></textarea>
-
-        <button type="submit" class="btn" style="width:100%;border:none;cursor:pointer;">
-            Enviar
-        </button>
-    </form>
-
-    <p id="mensajeEnviado" style="display:none;margin-top:20px;color:#4cff88;">
-        Redirigiendo...
-    </p>
-</section>
-
-<footer>
-    <p>© 2026 ANT Seguridad</p>
-</footer>
-
-<a class="whatsapp-float" href="https://wa.me/34644807642" target="_blank">
-    WhatsApp
-</a>
-
-<script>
-function enviarFormulario(e) {
-    e.preventDefault();
-
-    const nombre = document.getElementById('nombre').value;
-    const email = document.getElementById('email').value;
-    const telefono = document.getElementById('telefono').value;
-    const mensaje = document.getElementById('mensaje').value;
-
-    document.getElementById('mensajeEnviado').style.display = 'block';
-
-    const asunto = encodeURIComponent('Nuevo cliente ANT Seguridad');
-    const cuerpo = encodeURIComponent(
-        `Nombre: ${nombre}\nEmail: ${email}\nTeléfono: ${telefono}\nMensaje: ${mensaje}`
-    );
-
-    window.location.href =
-        `mailto:antcomercialvst@gmail.com?subject=${asunto}&body=${cuerpo}`;
-
-    const textoWhatsapp = encodeURIComponent(
-        `Hola, soy ${nombre}.\nEmail: ${email}\nTel: ${telefono}\nMensaje: ${mensaje}`
-    );
-
-    setTimeout(() => {
-        window.open(`https://wa.me/34644807642?text=Tengo interés en ampliar la información`, '_blank');
-    }, 1000);
-}
-</script>
-
+            const waText = encodeURIComponent(`Hola ANT Seguridad, soy ${nombre}. Me interesa un presupuesto para: ${mensaje}`);
+            setTimeout(() => {
+                window.open(`https://wa.me/34644807642?text=${waText}`, '_blank');
+            }, 1500);
+        });
+    </script>
 </body>
 </html>
