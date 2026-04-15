@@ -1,4 +1,253 @@
+DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANT Seguridad</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
+body {
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#0b1a2b;
+    color:white;
+}
+
+header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+    background:#08121f;
+}
+
+.logo-container {
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-container img {
+    height:40px;
+    width:auto;
+    object-fit:contain;
+}
+
+.logo-text {
+    font-size:18px;
+    font-weight:600;
+}
+
+nav a {
+    margin:0 10px;
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.hero {
+    height:90vh;
+    background: linear-gradient(rgba(11,26,43,0.8), rgba(11,26,43,0.9)),
+    url('https://images.unsplash.com/photo-1581090700227-1e8e9d3b3b6c');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero-logo {
+    width:220px;
+    margin-bottom:25px;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
+}
+
+.hero h2 {
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.hero p {
+    max-width:500px;
+    opacity:0.9;
+}
+
+.btn {
+    background:#ff2d2d;
+    padding:14px 28px;
+    border-radius:5px;
+    color:white;
+    text-decoration:none;
+    margin-top:20px;
+    display:inline-block;
+}
+
+.section {
+    padding:60px 20px;
+    text-align:center;
+}
+
+.services {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.card {
+    background:#132b45;
+    padding:20px;
+    margin:15px;
+    border-radius:10px;
+    width:260px;
+    transition:0.3s;
+}
+
+.card:hover {
+    transform:translateY(-5px);
+}
+
+footer {
+    background:#08121f;
+    text-align:center;
+    padding:20px;
+    font-size:14px;
+    opacity:0.8;
+}
+
+input, textarea {
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:none;
+    border-radius:5px;
+}
+
+.whatsapp-float {
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25d366;
+    color:white;
+    padding:14px 18px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    z-index:999;
+}
+
+@media (max-width:768px){
+    header {flex-direction:column;gap:10px;}
+    .hero h2 {font-size:28px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="logo.png" alt="ANT Seguridad logo">
+        <div class="logo-text">ANT Seguridad</div>
+    </div>
+
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="2.html">Servicios</a>
+        <a href="1.html">Contacto</a>
+    </nav>
+</header>
+
+<section class="hero">
+
+    <img src="logo.png" alt="ANT Seguridad logo" class="hero-logo">
+
+    <h2>Protegemos lo que más importa</h2>
+    <p>Alarmas, CCTV y seguridad profesional 24/7</p>
+    <a href="#" class="btn">Solicitar presupuesto</a>
+
+</section>
+
+<section class="section">
+    <h2>Servicios</h2>
+    <div class="services">
+        <div class="card">
+            <h3>Alarmas</h3>
+            <p>Instalación de sistemas de alarma sin cables.</p>
+        </div>
+        <div class="card">
+            <h3>Cámaras</h3>
+            <p>Videovigilancia con acceso remoto desde tu móvil.</p>
+        </div>
+        <div class="card">
+            <h3>Sin cuotas</h3>
+            <p>Control total desde tu móvil, sin pagos mensuales.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Contacto</h2>
+
+    <form onsubmit="enviarFormulario(event)" style="max-width:500px;margin:auto;text-align:left;">
+        <input id="nombre" type="text" placeholder="Nombre" required>
+        <input id="email" type="email" placeholder="Email" required>
+        <input id="telefono" type="tel" placeholder="Teléfono">
+        <textarea id="mensaje" placeholder="Mensaje" required></textarea>
+
+        <button type="submit" class="btn" style="width:100%;border:none;cursor:pointer;">
+            Enviar
+        </button>
+    </form>
+
+    <p id="mensajeEnviado" style="display:none;margin-top:20px;color:#4cff88;">
+        Redirigiendo...
+    </p>
+</section>
+
+<footer>
+    <p>© 2026 ANT Seguridad</p>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/34644807642" target="_blank">
+    WhatsApp
+</a>
+
+<script>
+function enviarFormulario(e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    const telefono = document.getElementById('telefono').value;
+    const mensaje = document.getElementById('mensaje').value;
+
+    document.getElementById('mensajeEnviado').style.display = 'block';
+
+    const asunto = encodeURIComponent('Nuevo cliente ANT Seguridad');
+    const cuerpo = encodeURIComponent(
+        `Nombre: ${nombre}\nEmail: ${email}\nTeléfono: ${telefono}\nMensaje: ${mensaje}`
+    );
+
+    window.location.href =
+        `mailto:antcomercialvst@gmail.com?subject=${asunto}&body=${cuerpo}`;
+
+    const textoWhatsapp = encodeURIComponent(
+        `Hola, soy ${nombre}.\nEmail: ${email}\nTel: ${telefono}\nMensaje: ${mensaje}`
+    );
+
+    setTimeout(() => {
+        window.open(`https://wa.me/34644807642?text=Tengo interés en ampliar la información`, '_blank');
+    }, 1000);
+}
+</script>
+
+</body>
+</html>
   .section {
     padding: 20px;
   }
